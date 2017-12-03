@@ -40,7 +40,7 @@ void *c() {
   pthread_mutex_unlock(&mutex);
     //sleep(id+3);
 
-  child_time_arr[id] = 2 + rand() % 9;
+  child_time_arr[id] = 2 + rand() % 7;
 
   pthread_mutex_lock(&mut_write);
   child_arr[id] = 1;
@@ -50,8 +50,8 @@ void *c() {
   //printf("%d\n", child_time_arr[id]);
   pthread_mutex_unlock(&mut_write);
 
-  //sleep(child_time_arr[id]);
-  sleep(id*2);
+  sleep(child_time_arr[id]);
+  //sleep(id*2);
 
   pthread_mutex_lock(&mut_write);
   child_arr[id] = 0;
@@ -77,8 +77,8 @@ int main() {
   pthread_t thread[CHILD_COUNT];
 
   for (int i=0;i<CHILD_COUNT;i++){
-    //sleep(2 + rand() % 9);
-    sleep(2);
+    sleep(2 + rand() % 4);
+    //sleep(2);
     pthread_create(&thread[i], NULL, &c, NULL);
   }
   for (int i=0;i<CHILD_COUNT;i++){
