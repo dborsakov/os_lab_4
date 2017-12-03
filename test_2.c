@@ -5,17 +5,8 @@
 #define A 10;
 
 
-struct Fam {
-  int count; //uniq number
-  static int c=0;
-  int tm; //time
-  bool bl; // responsible child
-  Fam *next;
-}
 
-typedef Fam *PFam;
-PFam HEAD = NULL;
-PFarm LAST = NULL;
+
 
 int main() {
   pthread_t f1_thread, f2_thread;
@@ -38,48 +29,6 @@ int main() {
 
 void *new_visitor(){
 
-  for (int i=0;i<10;i++) {
-
-  int time = srand()%10+1; //random time
-  PFarm NewNode = CreateFam(time);
-  if (HEAD == NULL)
-    {
-      NewNode -> next = HEAD;
-      HEAD = NewNode;
-      LAST = NewNode;
-    }
-  else
-    {
-      NewNode -> next = LAST -> next;
-      LAST -> next = NewNode;
-    }
-}
-}
-
-
-PFam CreateFam (int time) {
-  PFam NewFam = new Fam; //point new
-  NewFam->tm = time;
-  NewFam->c++;
-  NewFam->count = NewFam->c;
-  return NewNode;
-}
-
-void AddFirst (PFam &Head, PNode NewNode)
-{
+int time = srand()%10+1; //random time
 
 }
-/*void *f1(int *x) {
-  sleep(1);
-  *x=*x+5;
-  printf("f1: %d\n", *x);
-  pthread_exit(0);
-}
-
-void *f2(int *x) {
-    sleep(20);
-    *x=*x-5;
-    printf("f2: %d\n", *x);
-    pthread_exit(0);
-}
-*/
